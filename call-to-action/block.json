@@ -1,0 +1,17 @@
+{
+    "name": "acf/call-to-action",
+    "title": "Call-to-Action",
+    "description": "A custom call-to-action block that uses ACF fields.",
+    "category": "viridis",
+    "icon": "links",
+    "keywords": ["call-to-action", "cta", "acf"],
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_call_to_action_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+		"align": false
+    }
+}
