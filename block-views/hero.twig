@@ -1,0 +1,67 @@
+{#
+/**
+ * Block Name: Hero block
+ *
+ * This is the template that displays the hero block.
+ */
+#}
+{% if not function( 'is_page_template', 'page-blank.php' ) %}
+	<div class="">
+		{% if 'static' == fields.hero_type or 'random' == fields.hero_type %}
+			<div class="relative bg-no-repeat bg-cover bg-gray-500 flex items-center {{ is_main_site and is_front_page ? 'min-h-144 lg:min-h-160' : 'min-h-[30rem] lg:min-h-144' }}">
+				<img loading="eager" decoding="async" src="{{ bg_image }}" srcset="{{ bg_image_scset }}" alt="{{ bg_image_alt }}" class="absolute h-full w-full object-cover {{ bg_position }} top-0" />
+
+				<div class="absolute inset-0 w-full h-full bg-gradient-to-t {{ fields.heavy_overlay ? 'from-gray-900/60 via-gray-900/40 to-gray-900/60' : 'from-gray-900/60 via-gray-900/40 to-gray-900/20' }}">
+					<div class="w-full h-full mx-auto flex flex-col justify-end px-6 xl:container py-8 xl:py-12">
+						<div role="heading" aria-level="1" class="font-mont font-bold text-center text-white uppercase flex justify-center leading-none drop-shadow lg:justify-start {{ is_front_page and is_main_site ? 'leading-snug text-4xl lg:text-6xl xl:text-7xl lg:text-center' : 'text-4xl lg:text-6xl lg:text-left ' }}">
+							<span class="w-full font-mont text-hard-shadow-40">
+								{% if ( is_front_page and is_main_site ) %}
+										Live Your<br> <span class="bg-repeat-x bg-[length:100%_8px] md:bg-[length:100%_20px] bg-[0_90%] bg-gradient-to-r from-green/80 to-green/80">Marshall<br><span class="font-fancy">Moment</span></span>
+								{% else %}
+										{{ post.title|e( 'esc_html' ) }}
+								{% endif %}
+							</span>
+						</div>
+
+						{% if fields.subheading %}
+							<div class="w-full font-mont font-semibold text-center text-white text-xl mt-2 lg:text-left lg:w-3/4 lg:mt-6 lg:text-2xl xl:w-1/2">
+								<span class="text-hard-shadow-40">{{ fields.subheading|e( 'esc_html' ) }}</span>
+							</div>
+						{% endif %}
+
+						{% if fields.hero_cta_type == 'buttons' %}
+							{{ include( 'partial/hero-buttons.twig', {
+								'buttons': fields.buttons,
+								'hero_type': fields.hero_type
+							})}}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+		{% elseif 'color' == fields.hero_type %}
+			<div class="bg-green py-12">
+				<div class="w-full mx-auto xl:container px-4">
+					<div role="heading" aria-level="1" class="w-3/4 font-mont font-bold text-center text-white flex justify-center drop-shadow lg:justify-start {{ is_front_page and is_main_site ? 'leading-snug text-4xl lg:text-6xl xl:text-7xl lg:text-center' : 'text-4xl lg:text-5xl lg:text-left ' }}">
+						<span class="w-full font-mont text-hard-shadow-40">
+							{% if ( is_front_page and is_main_site ) %}
+									Live Your<br> <span class="bg-repeat-x bg-[length:100%_8px] md:bg-[length:100%_20px] bg-[0_90%] bg-gradient-to-r from-green/80 to-green/80">Marshall<br><span class="font-fancy">Moment</span></span>
+							{% else %}
+									{{ post.title|e( 'esc_html' ) }}
+							{% endif %}
+						</span>
+					</div>
+
+					{% if fields.subheading %}
+						<div class="w-full font-mont font-semibold text-center text-white text-xl mt-2 lg:text-left lg:w-3/4 lg:mt-6 lg:text-2xl xl:w-1/2">
+							<span class="text-hard-shadow-10">{{ fields.subheading|e( 'esc_html' ) }}</span>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{% else %}
+			{{ include( 'partial/no-hero.twig' ) }}
+			{{ include( 'partial/page-title.twig' ) }}
+		{% endif %}
+	</div>
+{% endif %}
