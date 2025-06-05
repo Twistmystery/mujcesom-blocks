@@ -1,0 +1,107 @@
+{#
+/**
+ * Block Name: Basic Content block
+ *
+ * This is the template that displays the facts and stats block.
+ */
+#}
+<div class="{{background}} grid grid-cols-1 lg:grid-cols-2 gap-4 flex-nowrap justify-center px-6 py-12 lg:py-24">
+
+    {% if fields.media_alignment == "left" %}
+    <div class="flex flex-1 flex-wrap m-4 justify-center"> 
+            {% if fields.image %}
+                <div class="flex flex-initial {{ fields.background_color == "green" ? "bg-black" : "bg-green" }} p-3 rounded-xl">
+                    <img class="object-contain flex flex-initial relative bottom-7 right-6 rounded-xl" src= {{ fields.image }} alt="">
+                </div>
+            {% elseif fields.youtube_video_id %}
+            <div class="flex flex-initial {{ fields.background_color == "green" ? "bg-black" : "bg-green" }} p-3 rounded-xl">
+                <div class="object-contain flex flex-initial relative bottom-7 right-6 rounded-xl">
+                {% apply shortcodes %}
+                [viridis_youtube video_url="https://www.youtube.com/embed/{{fields.youtube_video_id}}" rounded=true]
+                {% endapply %}
+                </div>
+            </div>
+            {% endif %}
+    </div><!--End Media Area-->
+    <div class="justify-center mx-4">
+            <div class="w-full mx-auto lg:container px-6 py-2 flex-col flex-wrap items-center justify-center"> 
+                {% if fields.accent_title %}
+                <div class="flex">
+                    <p class="text-2xl lg:text-3xl {{ fields.background_color == "green" ? "text-gray-700" : "text-green" }} 
+                    leading-none"> {{ fields.accent_title }} </p>
+                </div>
+                {% endif %}
+                <div class="flex">
+                    <h2 class="text-4xl lg:text-5xl font-bold {{ fields.background_color == "black" ? "text-white" : "text-black" }}
+                     leading-none"> {{ fields.main_title }} </h2>
+                </div>
+            </div>
+            <div class="pb-2 w-full flex flex-wrap mx-0 px-6 space-y-6 items-center justify-center">
+                <p class= "text-lg {{ fields.background_color == "white" ? "text-black" : "text-white" }} leading-none"> {{ fields.text }} </p>
+            </div>
+            {% if fields.buttons.primary_button and fields.buttons.primary_button_label %}
+            <div class= "py-4 px-auto mx-5 flex flex-row gap-2 items-center justify-center">
+                {% apply shortcodes %}
+                    [viridis_button link="{{ fields.buttons.primary_button  }}" text="{{ fields.buttons.primary_button_label }}" 
+                    class= {{ fields.background_color == "white" ? "button--primary" : "button--primary-dark" }}]
+                {% endapply %}
+            {% if fields.buttons.secondary_button and fields.buttons.secondary_button_label %}
+                {% apply shortcodes %}
+                    [viridis_button link ="{{ fields.buttons.secondary_button }}" text="{{ fields.buttons.secondary_button_label}}" 
+                    class="{{ fields.background_color == "white" ? "button--primary" : "button--primary-dark" }}" ]
+                {% endapply %}
+            {% endif %}    
+            </div>
+        {% endif %}
+    </div><!--end Text and Button Area-->
+
+    {% else %}
+    <div class="justify-center mx-4">
+            <div class="Title Area py-2 flex-col flex-wrap mx-0 items-center justify-center px-6">
+                {% if fields.accent_title %}
+                <div class="Accent Title flex">
+                    <p class="text-3xl {{ fields.background_color == "green" ? "text-black" : "text-green" }} 
+                    leading-none"> {{ fields.accent_title }} </p>
+                </div>
+                {% endif %}
+                <div class="Main Title flex">
+                    <h2 class="text-5xl font-bold {{ fields.background_color == "white" ? "text-black" : "text-white" }}
+                     leading-none"> {{ fields.main_title }} </h2>
+                </div>
+            </div>
+            <div class="Text Area pb-2 w-full flex flex-wrap mx-0 space-y-6 items-center justify-center px-6">
+                <p class= "text-lg {{ fields.background_color == "white" ? "text-black" : "text-white" }} leading-none"> {{ fields.text }} </p>
+            </div>
+            {% if fields.buttons.primary_button and fields.buttons.primary_button_label %}
+            <div class= "py-4 px-auto mx-5 flex flex-row gap-2 items-center justify-center">
+                {% apply shortcodes %}
+                    [viridis_button link="{{ fields.buttons.primary_button  }}" text="{{ fields.buttons.primary_button_label }}" 
+                    class={{ fields.background_color == "white" ? "button--primary" : "button--primary-dark" }}]
+                {% endapply %}
+            {% if fields.buttons.secondary_button and fields.buttons.secondary_button_label %}
+                {% apply shortcodes %}
+                    [viridis_button link="{{ fields.buttons.secondary_button }}" text="{{ fields.buttons.secondary_button_label}}" 
+                    class="{{ fields.background_color == "white" ? "button--primary" : "button--primary-dark" }}" ]
+                {% endapply %}
+            {% endif %}    
+            </div>
+        {% endif %}
+    </div><!--end Text and Button Area-->
+    <div class="Media Area flex flex-1 flex-wrap m-4 justify-center"> 
+            {% if fields.image %}
+                <div class="flex flex-initial {{ fields.background_color == "green" ? "bg-black" : "bg-green" }} p-3 rounded-xl">
+                    <img class="object-contain flex flex-initial relative bottom-7 right-6 rounded-xl" src= {{ fields.image }} alt="">
+                </div>
+            {% elseif fields.youtube_video_id %}
+            <div class="flex flex-initial {{ fields.background_color == "green" ? "bg-black" : "bg-green" }} p-3 rounded-xl">
+                <div class="object-contain flex flex-initial relative bottom-7 right-6 rounded-xl">
+                {% apply shortcodes %}
+                [viridis_youtube video_url="https://www.youtube.com/embed/{{fields.youtube_video_id}}" rounded=true]
+                {% endapply %}
+                </div>
+            </div>
+            {% endif %}
+    </div><!--End Media Area-->
+   {% endif %}
+</div><!--end basic content-->
+
