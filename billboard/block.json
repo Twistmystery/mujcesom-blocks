@@ -1,0 +1,17 @@
+{
+    "name": "acf/billboard",
+    "title": "Billboard",
+    "description": "A custom Billboard block that uses ACF fields.",
+    "category": "viridis",
+    "icon": "align-center",
+    "keywords": ["billboard", "acf"],
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_billboard_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+		"align": false
+    }
+}
