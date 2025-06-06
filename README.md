@@ -1,2 +1,2 @@
 # mujcesom-blocks
-Blocks developed for the Marshall University Joan C. Edwards School of Medicine during web dev internship
+This is the raw code for various blocks developed for the Marshall University Joan C. Edwards School of Medicine during my web dev internship. The blocks work in a WordPress environment and are a part of a specially designed WordPress theme for the med school's updating website. Each folder contains information of the fields for the block created using the Advanced Custom Fields Pro plugin (block.json).
